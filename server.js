@@ -11,9 +11,7 @@ const API_BASE = "http://161.132.37.13:8901";
 
 app.all("*", async (req, res) => {
   try {
-    const targetUrl =
-      API_BASE +
-      req.originalUrl;
+    const targetUrl = API_BASE + req.originalUrl;
 
     const response = await axios({
       method: req.method,
@@ -24,11 +22,9 @@ app.all("*", async (req, res) => {
       }
     });
 
-    res.status(response.status)
-       .json(response.data);
+    res.status(response.status).json(response.data);
 
   } catch (error) {
-
     if (error.response) {
       return res
         .status(error.response.status)
@@ -41,11 +37,8 @@ app.all("*", async (req, res) => {
   }
 });
 
-const PORT =
-  process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(
-    `Proxy iniciado en puerto ${PORT}`
-  );
+  console.log(`Proxy iniciado en puerto ${PORT}`);
 });
